@@ -1,0 +1,45 @@
+{
+   "pokemons": [
+        {
+            "id": 1,
+            "name": "pikachu",
+            "Basic_experience":112,
+            "height":4,
+            "weight":60,
+            "image":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+
+        },
+        {
+            "id": 2,
+            "name": "eevee",
+            "Basic_experience":65,
+            "height":3,
+            "weight":65,
+            "image":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
+        },
+        {
+            "id": 3,
+            "name": "charizard",
+            "Basic_experience":267,
+            "height":17,
+            "weight":905,
+            "image":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+        },
+        {
+            "id": 4,
+            "name": "snorlax",
+            "Basic_experience":189,
+            "height":21,
+            "weight":4600,
+            "image":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
+        },
+        {
+            "id": 5,
+            "name": "garchomp",
+            "Basic_experience":300,
+            "height":19,
+            "weight":950,
+            "image":"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png"
+        }
+    ]
+}
