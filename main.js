@@ -1,5 +1,42 @@
 window.addEventListener("DOMContentLoaded", (event) => {
+   event.preventDefault()
+    showheader()
+    showdetail()
+    
+    
+  });
 
+  function showdetail(){
+    fetch("http://localhost:3000/pokemons")
+    .then(res=> res.json())
+    .then (pokemons=>{
+        let container= document.getElementById('showDetail')
+        container.classList="flex-cont"
+        //debugger
+        pokemons.forEach(pokemon => {
+          const divtag= document.createElement('div')
+          const imgtag= document.createElement('img')
+          const ptag= document.createElement('p')
+          ptag.textContent=`Name :${pokemon.name}  Type :  ${pokemon.type}  Height : ${pokemon.height}  Weight : ${pokemon.weight}`
+          imgtag.src= `${pokemon.image}`
+
+          divtag.append(imgtag, ptag)
+          container.append(divtag)
+          
+            console.log(pokemon)
+            console.log(pokemon.name)
+            
+            //name,description,type
+            //create an ellement to hold the name,
+            //create a list item li to hold the name and description
+            //append ellements to list item
+            //append list to item container
+            //todo add image property to db.json ingredient
+        });
+    })
+  }
+
+  function showheader(){
     const divsearch= document.createElement('div')
     divsearch.classList="row"
 
@@ -9,31 +46,45 @@ window.addEventListener("DOMContentLoaded", (event) => {
     findinput.className="form-control"
     findinput.style.maxWidth="30%"
     findinput.style.display="initial"
+
+    findinput.value='charizard'
     
     const btnfind= document.createElement('button')
-    btnfind.classList="btn  btn-primary"
+    btnfind.classList="btn  btn-primary btnmargin"
     btnfind.id="btnfind"
     btnfind.innerText= 'Find'
     btnfind.addEventListener('click',findpokemon)
 
     const btnadd= document.createElement('button')
-    btnadd.classList="btn  btn-primary"
+    btnadd.classList="btn  btn-primary btnmargin"
     btnadd.id="btnadd"
     btnadd.innerText ="Add"
     btnadd.addEventListener('click',addpokemon)
 
+    const btnedit= document.createElement('button')
+    btnedit.classList="btn  btn-primary btnmargin"
+    btnedit.id="btnadd"
+    btnedit.innerText ="Edit"
+    btnedit.addEventListener('click',editpokemon)
+
+    const btnedel= document.createElement('button')
+    btnedel.classList="btn  btn-primary btnmargin"
+    btnedel.id="btnadd"
+    btnedel.innerText ="Delete"
+    btnedel.addEventListener('click',deletepokemon)
+
     const divfind= document.getElementById('findPokemon')
     divfind.classList="text-center thumbnail"
 
-    divsearch.append(findinput,btnfind,btnadd)
+    divsearch.append(findinput,btnfind,btnadd,btnedit,btnedel)
 
     divfind.appendChild(divsearch)
-    
-    
-  });
+  }
+
   function findpokemon(){
+    const txtinput= document.getElementById('txtfind').value
         
-    fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
+    fetch(`https://pokeapi.co/api/v2/pokemon/${txtinput}`)
     .then(res=> res.json())
     .then (pokemons=> {
         console.log(pokemons.name +'  ' + pokemons.height +'  '+ pokemons.weight+'  '+ pokemons.types[0].type.name+'  '+pokemons.sprites.front_default)
@@ -41,83 +92,65 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const img= document.createElement('img')
         const divfind= document.getElementById('findPokemon')
         const divshowitem= document.createElement('div')
-        divshowitem.classList="row"
+        divshowitem.classList="row col-container"
+
+        divshowitem.innerHTML=`
+            <div class="col-sm-3">
+              <img id="pokemonimg" src=${pokemons.sprites.front_default}>
+            </div>
+            <div class="col-sm-2">
+              <label >Pokemon Name</label>
+              <input id="txtname" type="text" value=${pokemons.name} > </input>
+            </div>
+            <div class="col-sm-2">
+              <label >Type</label>
+              <input id="txttype" type="text" value=${pokemons.types[0].type.name} > </input>
+            </div>
+            <div class="col-sm-2">
+              <label >Height</label>
+              <input id="txtheight" type="text" value=${pokemons.height} > </input>
+            </div>
+            <div class="col-sm-2">
+              <label >Weight</label>
+              <input id="txtweight" type="text" value=${pokemons.weight} > </input>
+        </div>`
         
-        const divimg= document.createElement('div')
-        divimg.classList="col-sm-3"
-        divimg.appendChild(img)
         
-        const nameinput= document.createElement('input')  
-        nameinput.type="text"
-        nameinput.id="txtname"
-        nameinput.classList="form-control "
-
-        const divname= document.createElement('div')
-        divname.classList="col-sm-3"
-        divname.appendChild(nameinput)
-
-        
-
-        const typeinput= document.createElement('input')  
-        typeinput.type="text"
-        typeinput.id="txttype"
-        typeinput.classList="form-control"
-
-        const divtype= document.createElement('div')
-        divtype.classList="col-sm-3"
-        divtype.appendChild(typeinput)
-
-        const heightinput= document.createElement('input')  
-        heightinput.type="text"
-        heightinput.id="txtheight"
-        heightinput.classList="form-control"
-
-        const divheight= document.createElement('div')
-        divheight.classList="col-sm-1"
-        divheight.appendChild(heightinput)
-
-        const weightinput= document.createElement('input')  
-        weightinput.type="text"
-        weightinput.id="txtweight"
-        weightinput.classList="form-control"
-
-        const divweight= document.createElement('div')
-        divweight.classList="col-sm-1"
-        divweight.appendChild(weightinput)
-
-        img.src=pokemons.sprites.front_default
-        nameinput.value=pokemons.name
-        typeinput.value=pokemons.types[0].type.name
-        heightinput.value=pokemons.height
-        weightinput.value=pokemons.weight
-
-        divshowitem.append(divimg,divname,divtype,divheight,divweight)
-
-     //divfind.append(img,nameinput,typeinput,heightinput,weightinput)
-     divfind.appendChild(divshowitem)
+      divfind.appendChild(divshowitem)
     })
 
   }
-  function addpokemon(){
-    console.log("run botton Add pokemon")
+  function addpokemon(e){
+    fetch('http://localhost:3000/pokemons', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ 
+        // "name": document.getElementById("txtname").value,
+        // "height":document.getElementById("txttype").value,
+        // "weight":document.getElementById("txtheight").value,
+        // "type": document.getElementById("txtweight").value,
+        // "image":document.getElementById("pokemonimg").src
+        "name":e.target.name.value,
+        "height":e.target.height.value,
+        "weight":e.target.weight.value,
+        "type":e.target.type.value,
+        "image":e.target.img.src
+      })
+    })
+    .then(response => response.json())
+    .then(response => console.log(JSON.stringify(response)))
+    showdetail()
   }
 
-console.log("run Main.js file")
+  function editpokemon(){
+    console.log("run Edit button")
+  }
 
-fetch("http://localhost:3000/pokemons")
-.then(res=> res.json())
-.then (pokemons=>{
-    const container= document.querySelector("ul#pokemonList");
-    pokemons.forEach(pokemon => {
-        console.log(pokemon)
-        console.log(pokemon.name)
-        
-        //name,description,type
-        //create an ellement to hold the name,
-        //create a list item li to hold the name and description
-        //append ellements to list item
-        //append list to item container
-        //todo add image property to db.json ingredient
-    });
-})
+  function deletepokemon(){
+    console.log("run Delete Button")
+  }
+
 
