@@ -2,42 +2,22 @@ window.addEventListener("DOMContentLoaded", (event) => {
    event.preventDefault()
     showheader()
     showdetail()
-    
-    
   });
 
   function showdetail(){
+    //debugger
     fetch("http://localhost:3000/pokemons")
     .then(res=> res.json())
-    .then (pokemons=>{
-        let container= document.getElementById('showDetail')
-        container.classList="flex-cont"
-        //debugger
-        pokemons.forEach(pokemon => {
-          const divtag= document.createElement('div')
-          const imgtag= document.createElement('img')
-          const ptag= document.createElement('p')
-          ptag.textContent=`Name :${pokemon.name}  Type :  ${pokemon.type}  Height : ${pokemon.height}  Weight : ${pokemon.weight}`
-          imgtag.src= `${pokemon.image}`
-
-          divtag.append(imgtag, ptag)
-          container.append(divtag)
-          
-            console.log(pokemon)
-            console.log(pokemon.name)
-            
-            //name,description,type
-            //create an ellement to hold the name,
-            //create a list item li to hold the name and description
-            //append ellements to list item
-            //append list to item container
-            //todo add image property to db.json ingredient
-        });
-    })
+    .then (pokemonsData=> pokemonsData.forEach(pokemon => renderpokemon(pokemon)))
+      
   }
 
   function showheader(){
+
+    console.log('run this show button')
+    //debugger
     const divsearch= document.createElement('div')
+    
     divsearch.classList="row"
 
     const findinput= document.createElement('input')  
@@ -60,7 +40,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btnadd.id="btnadd"
     btnadd.innerText ="Add"
     btnadd.addEventListener('click',addpokemon)
-
+    
     const btnedit= document.createElement('button')
     btnedit.classList="btn  btn-primary btnmargin"
     btnedit.id="btnadd"
@@ -82,6 +62,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function findpokemon(){
+    console.log('run find button')
     const txtinput= document.getElementById('txtfind').value
         
     fetch(`https://pokeapi.co/api/v2/pokemon/${txtinput}`)
@@ -91,8 +72,10 @@ window.addEventListener("DOMContentLoaded", (event) => {
         //debugger
         const img= document.createElement('img')
         const divfind= document.getElementById('findPokemon')
+        console.log(divfind)
         const divshowitem= document.createElement('div')
         divshowitem.classList="row col-container"
+        divshowitem.id="showfindpokemon"
 
         divshowitem.innerHTML=`
             <div class="col-sm-3">
@@ -121,28 +104,65 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   }
   function addpokemon(e){
+    let pokemonObj= {
+      name: document.getElementById("txtname").value,
+      height: document.getElementById("txtheight").value,
+      weight:document.getElementById("txtweight").value,
+      type: document.getElementById("txttype").value,
+      image: document.getElementById("pokemonimg").src
+    }
+
+    renderpokemon(pokemonObj)
+    insertpokemon(pokemonObj)
+    //debugger
+    
+    
+  }
+  function insertpokemon(pokemonObj){
     fetch('http://localhost:3000/pokemons', {
     method: 'POST',
     headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ 
-        // "name": document.getElementById("txtname").value,
-        // "height":document.getElementById("txttype").value,
-        // "weight":document.getElementById("txtheight").value,
-        // "type": document.getElementById("txtweight").value,
-        // "image":document.getElementById("pokemonimg").src
-        "name":e.target.name.value,
-        "height":e.target.height.value,
-        "weight":e.target.weight.value,
-        "type":e.target.type.value,
-        "image":e.target.img.src
-      })
+      body: JSON.stringify(pokemonObj)
     })
     .then(response => response.json())
     .then(response => console.log(JSON.stringify(response)))
-    showdetail()
+    removesearch()
+    
+    
+  }
+
+  function removesearch() {
+    const element = document.getElementById("showfindpokemon");
+    element.remove();
+  }
+
+
+  function renderpokemon (pokemon){
+    
+      console.log(pokemon)
+
+      let container= document.getElementById('showDetail')
+      //container.classList="flex-cont photo"
+      //debugger
+
+        const divtag= document.createElement('div')
+        divtag.classList="gallery"
+        const divtagouter= document.createElement('div')
+        divtagouter.classList="responsive"
+        
+        const imgtag= document.createElement('img')
+        const ptag= document.createElement('p')
+        ptag.classLis="desc"
+        ptag.textContent=`Name :${pokemon.name}  Type :  ${pokemon.type}  Height : ${pokemon.height}  Weight : ${pokemon.weight}`
+        imgtag.src= `${pokemon.image}`
+
+        divtag.append(imgtag, ptag)
+        divtagouter.appendChild(divtag)
+        container.append(divtagouter)
+        
   }
 
   function editpokemon(){

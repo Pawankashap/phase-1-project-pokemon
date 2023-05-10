@@ -41,44 +41,44 @@
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png"
     },
     {
-      "name": "piplup",
-      "height": "water",
-      "weight": "4",
-      "type": "52",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/393.png",
-      "id": 8
-    },
-    {
-      "name": "lucario",
-      "height": "fighting",
-      "weight": "12",
-      "type": "540",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/448.png",
-      "id": 9
-    },
-    {
-      "name": "ditto",
-      "height": "normal",
-      "weight": "3",
-      "type": "40",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png",
-      "id": 10
-    },
-    {
-      "name": "mew",
-      "height": "psychic",
-      "weight": "4",
-      "type": "40",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
-      "id": 11
+      "name": "charizard",
+      "height": "17",
+      "weight": "905",
+      "type": "fire",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "id": 6
     },
     {
       "name": "charizard",
-      "height": "fire",
-      "weight": "17",
-      "type": "905",
+      "height": "17",
+      "weight": "905",
+      "type": "fire",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-      "id": 12
+      "id": 7
+    },
+    {
+      "name": "charizard",
+      "height": "17",
+      "weight": "905",
+      "type": "fire",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "id": 8
+    },
+    {
+      "name": "charizard",
+      "height": "17",
+      "weight": "905",
+      "type": "fire",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "id": 9
+    },
+    {
+      "name": "charizard",
+      "height": "17",
+      "weight": "905",
+      "type": "fire",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "id": 10
     }
   ]
 }
