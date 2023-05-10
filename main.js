@@ -1,3 +1,32 @@
+window.addEventListener("DOMContentLoaded", (event) => {
+    const findinput= document.createElement('input')  
+    findinput.type="text"
+    findinput.id="txtfind"
+    
+    const btnfind= document.createElement('button')
+    btnfind.id="btnfind"
+    btnfind.innerText= 'Find'
+    btnfind.addEventListener('click',findpokemon)
+
+    const btnadd= document.createElement('button')
+    btnadd.id="btnadd"
+    btnadd.innerText ="Add"
+    btnadd.addEventListener('click',addpokemon)
+
+    const divfind= document.getElementById('findPokemon')
+    divfind.appendChild(findinput)
+    divfind.appendChild(btnfind)
+    divfind.appendChild(btnadd)
+    
+  });
+  function findpokemon(){
+    console.log("run botton find pokemon")
+    
+  }
+  function addpokemon(){
+    console.log("run botton Add pokemon")
+  }
+
 console.log("run Main.js file")
 
 fetch("http://localhost:3000/pokemons")
@@ -18,9 +47,11 @@ fetch("http://localhost:3000/pokemons")
 })
 
 
-fetch("https://pokeapi.co/api/v2/pokemon/garchomp")
+fetch("https://pokeapi.co/api/v2/pokemon/pikachu")
 .then(res=> res.json())
 .then (pokemons=> {
     console.log(pokemons)
+   // debugger
     console.log(pokemons.name)
+    console.log(pokemons.types[0].type.name)
 })
