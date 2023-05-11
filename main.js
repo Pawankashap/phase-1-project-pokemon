@@ -233,7 +233,8 @@ debugger
         // imgtag.classList=`${pokemon.id}`
          imgtag.id=`${pokemon.id}`
          imgtag.addEventListener('click',backineditor)
-        const ptag= document.createElement('div')
+        const dtag= document.createElement('div')
+
         const lblname= document.createElement('label')
         lblname.innerHTML=`${pokemon.name}`
         lblname.classList="txtvalue"
@@ -246,11 +247,13 @@ debugger
         const lblweight= document.createElement('label')
         lblweight.innerHTML=`${pokemon.weight}` 
         lblweight.classList="txtvalue"
-        ptag.classLis="desc"
-        ptag.textContent=`Name :${lblname.innerText}  Type :  ${lbltype.innerText}  Height : ${lblheight.innerText}  Weight : ${lblweight.innerText}`
+        dtag.classLis="desc"
+        dtag.innerHTML= `<lable>Name: </lable> <lable>${lblname.innerText}</lable> <lable>Type : </lable> <lable>${lbltype.innerText}</lable> 
+        <lable>height : </lable> <lable>${lblheight.innerText}</lable> <lable>Weight: </lable> <lable>${lblweight.innerText}</lable> `
+           
         imgtag.src= `${pokemon.image}`
 
-        divtag.append(imgtag, ptag)
+        divtag.append(imgtag, dtag)
         divtagouter.appendChild(divtag)
         container.append(divtagouter)
         
