@@ -217,11 +217,12 @@ debugger
         
         const divtagouter= document.createElement('div')
         divtagouter.classList="responsive"
-        divtagouter.addEventListener('click',backineditor)
+        
         
         const imgtag= document.createElement('img')
         // imgtag.classList=`${pokemon.id}`
          imgtag.id=`${pokemon.name}`
+         imgtag.addEventListener('click',backineditor)
         const ptag= document.createElement('p')
         ptag.classLis="desc"
         ptag.textContent=`Name :${pokemon.name}  Type :  ${pokemon.type}  Height : ${pokemon.height}  Weight : ${pokemon.weight}`
