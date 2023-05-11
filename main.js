@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btnedit.id="btnedit"
     btnedit.disabled=true
     btnedit.innerText ="Edit"
-    btnedit.addEventListener('click',editpokemon)
+    btnedit.addEventListener('click', editpokemon)
 
    
 
@@ -65,7 +65,45 @@ window.addEventListener("DOMContentLoaded", (event) => {
     divfind.appendChild(divsearch)
   }
 
- 
+  function editpokemon(){
+    let pokemonObj= {
+      id: document.querySelector('.chk').id,
+      name: document.getElementById("txtname").value,
+      height: document.getElementById("txtheight").value,
+      weight:document.getElementById("txtweight").value,
+      type: document.getElementById("txttype").value,
+      image: document.getElementById("pokemonimg").src
+    }
+    const gridvalue = document.querySelector(`.c${pokemonObj.id}`)
+    gridvalue.querySelector('.clsname').innerHTML=pokemonObj.name
+    gridvalue.querySelector('.clstype').innerHTML=pokemonObj.type
+    gridvalue.querySelector('.clsheight').innerHTML=pokemonObj.height
+    gridvalue.querySelector('.clsweight').innerHTML=pokemonObj.weight
+
+    updatepokemon(pokemonObj)
+
+  }
+
+  function updatepokemon(pokemonObj){
+    debugger
+    console.log(`http://localhost:3000/pokemons/${pokemonObj.id}`)
+
+    fetch(`http://localhost:3000/pokemons/${pokemonObj.id}`, {
+    method: 'PATCH',
+    headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: document.getElementById("txtname").value,
+        height: document.getElementById("txtheight").value,
+        weight:document.getElementById("txtweight").value,
+        type: document.getElementById("txttype").value,
+      })
+    })
+    .then(response => response.json())
+    .then(response => console.log(JSON.stringify(response)))
+    removesearch()
+  }
 
   function findpokemon(pokemonname){
     debugger
@@ -218,7 +256,7 @@ debugger
 
       let container= document.getElementById('showDetail')
       //container.classList="flex-cont photo"
-      debugger
+      //debugger
 
         const divtag= document.createElement('div')
         divtag.classList=`gallery ${pokemon.id}`
@@ -226,7 +264,7 @@ debugger
         
         
         const divtagouter= document.createElement('div')
-        divtagouter.classList="responsive"
+        divtagouter.classList=`responsive d${pokemon.id}`
         
         
         const imgtag= document.createElement('img')
@@ -247,17 +285,29 @@ debugger
         const lblweight= document.createElement('label')
         lblweight.innerHTML=`${pokemon.weight}` 
         lblweight.classList="txtvalue"
-        dtag.classLis="desc"
-        dtag.innerHTML= `<lable>Name: </lable> <lable>${lblname.innerText}</lable> <lable>Type : </lable> <lable>${lbltype.innerText}</lable> 
-        <lable>height : </lable> <lable>${lblheight.innerText}</lable> <lable>Weight: </lable> <lable>${lblweight.innerText}</lable> `
-           
+        //dtag.classLis=`desc${pokemon.id}`
+        dtag.classList=`c${pokemon.id}`
+        dtag.innerHTML= `<b><lable class='clsname'>${lblname.innerText}</lable></b> <br> <lable>Type : </lable> <lable class='clstype'>${lbltype.innerText}</lable> &nbsp;&nbsp;
+        <lable>height : </lable> <lable class='clsheight'>${lblheight.innerText}</lable> &nbsp;&nbsp;<lable>Weight: </lable> <lable class='clsweight'>${lblweight.innerText}</lable> `
+        //dtag.append(lblname,lbltype,lblheight,lblweight) 
         imgtag.src= `${pokemon.image}`
 
         divtag.append(imgtag, dtag)
         divtagouter.appendChild(divtag)
         container.append(divtagouter)
-        
+
+        // const btnedit= document.getElementById('btnedit')
+        // btnedit.addEventListener('click', (e) => {
+        //   debugger
+        //   console.log(e.target.id)
+        //     pokemon.height=Number(pokemon.height)+10
+        //     lblheight.textContent=pokemon.height
+        // })
+         
   }
+
+  
+
 
   function backineditor (e){
     if(checkpokemon()==true){
@@ -273,45 +323,12 @@ debugger
 
 
 
-  function editpokemon(){
-    //debugger
-    let pokemonObj= {
-      id: document.querySelector('.chk').id,
-      name: document.getElementById("txtname").value,
-      height: document.getElementById("txtheight").value,
-      weight:document.getElementById("txtweight").value,
-      type: document.getElementById("txttype").value,
-      image: document.getElementById("pokemonimg").src
-    }
-    //updatepokemon(pokemonObj)
-    debugger
-    renderpokemonupdate(pokemonObj)
-
-  }
+  
   function renderpokemonupdate(pokemonObj){
 
   }
 
-  function updatepokemon(pokemonObj){
-    debugger
-    console.log(`http://localhost:3000/pokemons/${pokemonObj.id}`)
-
-    fetch(`http://localhost:3000/pokemons/${pokemonObj.id}`, {
-    method: 'PATCH',
-    headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: document.getElementById("txtname").value,
-        height: document.getElementById("txtheight").value,
-        weight:document.getElementById("txtweight").value,
-        type: document.getElementById("txttype").value,
-      })
-    })
-    .then(response => response.json())
-    .then(response => console.log(JSON.stringify(response)))
-    removesearch()
-  }
+  
 
   function deletepokemon(){
     console.log("run Delete Button")
