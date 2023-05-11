@@ -49,19 +49,19 @@
       "id": 6
     },
     {
-      "name": "charizard",
-      "height": "17",
-      "weight": "905",
-      "type": "fire",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "name": "mew",
+      "height": "4",
+      "weight": "40",
+      "type": "psychic",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png",
       "id": 7
     },
     {
-      "name": "charizard",
-      "height": "17",
-      "weight": "905",
-      "type": "fire",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "name": "palkia",
+      "height": "42",
+      "weight": "3360",
+      "type": "water",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/484.png",
       "id": 8
     },
     {
@@ -71,14 +71,6 @@
       "type": "fire",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
       "id": 9
-    },
-    {
-      "name": "charizard",
-      "height": "17",
-      "weight": "905",
-      "type": "fire",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-      "id": 10
     }
   ]
 }

@@ -61,10 +61,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
     divfind.appendChild(divsearch)
   }
 
-  function findpokemon(){
-    console.log('run find button')
-    const txtinput= document.getElementById('txtfind').value
-        
+  function findpokemon(pokemonname){
+    debugger
+    let txtinput
+    if(typeof pokemonname==='string' && typeof pokemonname!=='' && typeof pokemonname!=="" ){
+      txtinput=pokemonname
+    }
+    else if(document.getElementById('txtfind').value!==''){
+      txtinput= document.getElementById('txtfind').value
+    }
+    
+    if(txtinput!=='' && txtinput!==undefined)  {
     fetch(`https://pokeapi.co/api/v2/pokemon/${txtinput}`)
     .then(res=> res.json())
     .then (pokemons=> {
@@ -99,8 +106,12 @@ window.addEventListener("DOMContentLoaded", (event) => {
         </div>`
         
         
-      divfind.appendChild(divshowitem)
-    })
+        divfind.appendChild(divshowitem)
+        })
+        .catch(error => {
+          throw(error);
+        })
+     }
 
   }
   function addpokemon(e){
@@ -149,11 +160,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
       //debugger
 
         const divtag= document.createElement('div')
-        divtag.classList="gallery"
+        divtag.classList=`gallery ${pokemon.id}`
+        //divtag.id=`${pokemon.id}`
+        
+        
         const divtagouter= document.createElement('div')
         divtagouter.classList="responsive"
+        divtagouter.addEventListener('click',backineditor)
         
         const imgtag= document.createElement('img')
+        // imgtag.classList=`${pokemon.id}`
+         imgtag.id=`${pokemon.name}`
         const ptag= document.createElement('p')
         ptag.classLis="desc"
         ptag.textContent=`Name :${pokemon.name}  Type :  ${pokemon.type}  Height : ${pokemon.height}  Weight : ${pokemon.weight}`
@@ -164,6 +181,33 @@ window.addEventListener("DOMContentLoaded", (event) => {
         container.append(divtagouter)
         
   }
+
+  function backineditor (e){
+    debugger
+    if(checkpokemon()==null){
+      findpokemon(e.target.id)
+    }
+    else {
+      document.getElementById('showfindpokemon').remove()
+      findpokemon(e.target.id)
+    }
+
+  }
+
+  function checkpokemon(){
+    let a= document.getElementById('showfindpokemon')
+    if( a !== null) {
+        console.log(a.id)
+        return a.id
+    }
+    else {
+        console.log('a is null value')
+        return 
+    }
+    
+  }
+
+
 
   function editpokemon(){
     console.log("run Edit button")
