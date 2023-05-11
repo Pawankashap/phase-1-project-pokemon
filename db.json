@@ -71,6 +71,14 @@
       "type": "fire",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
       "id": 9
+    },
+    {
+      "name": "charizard",
+      "height": "17",
+      "weight": "905",
+      "type": "fire",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "id": 10
     }
   ]
 }

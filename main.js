@@ -43,7 +43,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     
     const btnedit= document.createElement('button')
     btnedit.classList="btn  btn-primary btnmargin"
-    btnedit.id="btnadd"
+    btnedit.id="btnedit"
+    btnedit.disabled=true
     btnedit.innerText ="Edit"
     btnedit.addEventListener('click',editpokemon)
 
@@ -51,7 +52,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     const btnedel= document.createElement('button')
     btnedel.classList="btn  btn-primary btnmargin"
-    btnedel.id="btnadd"
+    btnedel.id="btndel"
+    btnedel.disabled=true
     btnedel.innerText ="Delete"
     btnedel.addEventListener('click',deletepokemon)
 
@@ -87,14 +89,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
             chkdiv.classList="col-sm-2"
             const chkbox= document.createElement('input')
             chkbox.type='checkbox'
-            chkbox.id=`id=${pokemons.id}`
+            chkbox.id=`${pokemons.id}`
+            chkbox.classList="chk"
             chkbox.addEventListener('change',setenable)
-
+            chkbox.checked=true
             chkdiv.appendChild(chkbox)
 
         const img= document.createElement('img')
         const divfind= document.getElementById('findPokemon')
-        console.log(divfind)
+        //console.log(divfind)
         const divshowitem= document.createElement('div')
         divshowitem.classList="row col-container"
         divshowitem.id="showfindpokemon"
@@ -131,8 +134,35 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   }
 
-  function setenable (){
-    console.log("Run Check Box")
+  function setenable (e){
+    console.log(document.getElementById('txtname').value)
+debugger
+    const chkvalue= document.getElementById(`${e.target.id}`)
+    console.log(chkvalue)
+    if(chkvalue.checked===true){
+      setenablebutton(2)
+    }
+    else {
+      document.getElementById('showfindpokemon').remove()
+      setenablebutton(1)
+    }
+
+
+    
+
+  }
+
+  function setenablebutton(Obj){
+      if(Obj===1){
+         document.getElementById('btnadd').disabled=false
+         document.getElementById('btnedit').disabled=true 
+         document.getElementById('btndel').disabled=true
+      }
+      else if(Obj===2){
+        document.getElementById('btnadd').disabled=true
+        document.getElementById('btnedit').disabled=false 
+        document.getElementById('btndel').disabled=false
+      }
   }
 
   function addpokemon(e){
@@ -174,7 +204,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   function renderpokemon (pokemon){
     
-      console.log(pokemon)
+     // console.log(pokemon)
 
       let container= document.getElementById('showDetail')
       //container.classList="flex-cont photo"
@@ -204,10 +234,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function backineditor (e){
-    debugger
-    console.log("run picture event")
     if(checkpokemon()==true){
       findpokemon(e.target.id)
+      setenablebutton(2)
     }
   }
 
