@@ -69,20 +69,24 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   function findpokemon(pokemonname){
     debugger
-    let txtinput
-    if(typeof pokemonname==='string' && typeof pokemonname!=='' && typeof pokemonname!=="" ){
+    let txtinput, fetchValue
+    if(typeof pokemonname==='number' && typeof pokemonname!=='' && typeof pokemonname!=="" ){
       txtinput=pokemonname
+      fetchValue=`http://localhost:3000/pokemons/${txtinput}`
     }
     else if(document.getElementById('txtfind').value!==''){
       txtinput= document.getElementById('txtfind').value
+      fetchValue=`https://pokeapi.co/api/v2/pokemon/${txtinput}`
     }
-    
+    debugger
     if(txtinput!=='' && txtinput!==undefined)  {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${txtinput}`)
+     console.log(`https://pokeapi.co/api/v2/pokemon/${txtinput}`)
+     
+    fetch(fetchValue)
     .then(res=> res.json())
     .then (pokemons=> {
-        console.log(pokemons.name +'  ' + pokemons.height +'  '+ pokemons.weight+'  '+ pokemons.types[0].type.name+'  '+pokemons.sprites.front_default)
-        //debugger
+        //console.log(pokemons.id+ '  ' +pokemons.name +'  ' + pokemons.height +'  '+ pokemons.weight+'  '+ pokemons.types[0].type.name+'  '+pokemons.sprites.front_default)
+        debugger
 
             const chkdiv = document.createElement('div')
             chkdiv.style="max-width: fit-content; padding-top: 2%;"
@@ -101,10 +105,20 @@ window.addEventListener("DOMContentLoaded", (event) => {
         const divshowitem= document.createElement('div')
         divshowitem.classList="row col-container"
         divshowitem.id="showfindpokemon"
+        let imagepath,typepath;
+        debugger
+        if(typeof txtinput === 'number') {
+          imagepath=pokemons.image
+          typepath=pokemons.type
+        }
+        else {
+          imagepath=pokemons.sprites.front_default
+          typepath=pokemons.types[0].type.name
+        }
 
         divshowitem.innerHTML=`
             <div class="col-sm-3">
-              <img id="pokemonimg" src=${pokemons.sprites.front_default}>
+              <img id="pokemonimg" src=${imagepath}>
             </div>
             <div class="col-sm-2">
               <label >Pokemon Name</label>
@@ -112,7 +126,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
             </div>
             <div class="col-sm-2">
               <label >Type</label>
-              <input id="txttype" type="text" value=${pokemons.types[0].type.name} > </input>
+              <input id="txttype" type="text" value=${typepath} > </input>
             </div>
             <div class="col-sm-2">
               <label >Height</label>
@@ -146,10 +160,6 @@ debugger
       document.getElementById('showfindpokemon').remove()
       setenablebutton(1)
     }
-
-
-    
-
   }
 
   function setenablebutton(Obj){
@@ -208,7 +218,7 @@ debugger
 
       let container= document.getElementById('showDetail')
       //container.classList="flex-cont photo"
-      //debugger
+      debugger
 
         const divtag= document.createElement('div')
         divtag.classList=`gallery ${pokemon.id}`
@@ -221,11 +231,23 @@ debugger
         
         const imgtag= document.createElement('img')
         // imgtag.classList=`${pokemon.id}`
-         imgtag.id=`${pokemon.name}`
+         imgtag.id=`${pokemon.id}`
          imgtag.addEventListener('click',backineditor)
-        const ptag= document.createElement('p')
+        const ptag= document.createElement('div')
+        const lblname= document.createElement('label')
+        lblname.innerHTML=`${pokemon.name}`
+        lblname.classList="txtvalue"
+        const lbltype= document.createElement('label')
+        lbltype.innerHTML=`${pokemon.type}`
+        lbltype.classList="txtvalue"
+        const lblheight= document.createElement('label')
+        lblheight.innerHTML=`${pokemon.height}`
+        lblheight.classList="txtvalue"
+        const lblweight= document.createElement('label')
+        lblweight.innerHTML=`${pokemon.weight}` 
+        lblweight.classList="txtvalue"
         ptag.classLis="desc"
-        ptag.textContent=`Name :${pokemon.name}  Type :  ${pokemon.type}  Height : ${pokemon.height}  Weight : ${pokemon.weight}`
+        ptag.textContent=`Name :${lblname.innerText}  Type :  ${lbltype.innerText}  Height : ${lblheight.innerText}  Weight : ${lblweight.innerText}`
         imgtag.src= `${pokemon.image}`
 
         divtag.append(imgtag, ptag)
@@ -236,7 +258,7 @@ debugger
 
   function backineditor (e){
     if(checkpokemon()==true){
-      findpokemon(e.target.id)
+      findpokemon(Number(e.target.id))
       setenablebutton(2)
     }
   }
@@ -249,7 +271,43 @@ debugger
 
 
   function editpokemon(){
-    console.log("run Edit button")
+    //debugger
+    let pokemonObj= {
+      id: document.querySelector('.chk').id,
+      name: document.getElementById("txtname").value,
+      height: document.getElementById("txtheight").value,
+      weight:document.getElementById("txtweight").value,
+      type: document.getElementById("txttype").value,
+      image: document.getElementById("pokemonimg").src
+    }
+    //updatepokemon(pokemonObj)
+    debugger
+    renderpokemonupdate(pokemonObj)
+
+  }
+  function renderpokemonupdate(pokemonObj){
+
+  }
+
+  function updatepokemon(pokemonObj){
+    debugger
+    console.log(`http://localhost:3000/pokemons/${pokemonObj.id}`)
+
+    fetch(`http://localhost:3000/pokemons/${pokemonObj.id}`, {
+    method: 'PATCH',
+    headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: document.getElementById("txtname").value,
+        height: document.getElementById("txtheight").value,
+        weight:document.getElementById("txtweight").value,
+        type: document.getElementById("txttype").value,
+      })
+    })
+    .then(response => response.json())
+    .then(response => console.log(JSON.stringify(response)))
+    removesearch()
   }
 
   function deletepokemon(){
