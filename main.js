@@ -47,6 +47,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btnedit.innerText ="Edit"
     btnedit.addEventListener('click',editpokemon)
 
+   
+
     const btnedel= document.createElement('button')
     btnedel.classList="btn  btn-primary btnmargin"
     btnedel.id="btnadd"
@@ -60,6 +62,8 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     divfind.appendChild(divsearch)
   }
+
+ 
 
   function findpokemon(pokemonname){
     debugger
@@ -77,6 +81,17 @@ window.addEventListener("DOMContentLoaded", (event) => {
     .then (pokemons=> {
         console.log(pokemons.name +'  ' + pokemons.height +'  '+ pokemons.weight+'  '+ pokemons.types[0].type.name+'  '+pokemons.sprites.front_default)
         //debugger
+
+            const chkdiv = document.createElement('div')
+            chkdiv.style="max-width: fit-content; padding-top: 2%;"
+            chkdiv.classList="col-sm-2"
+            const chkbox= document.createElement('input')
+            chkbox.type='checkbox'
+            chkbox.id=`id=${pokemons.id}`
+            chkbox.addEventListener('change',setenable)
+
+            chkdiv.appendChild(chkbox)
+
         const img= document.createElement('img')
         const divfind= document.getElementById('findPokemon')
         console.log(divfind)
@@ -103,8 +118,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
             <div class="col-sm-2">
               <label >Weight</label>
               <input id="txtweight" type="text" value=${pokemons.weight} > </input>
-        </div>`
-        
+            </div>
+            `
+        divshowitem.appendChild(chkdiv)
         
         divfind.appendChild(divshowitem)
         })
@@ -114,6 +130,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
      }
 
   }
+
+  function setenable (){
+    console.log("Run Check Box")
+  }
+
   function addpokemon(e){
     let pokemonObj= {
       name: document.getElementById("txtname").value,
@@ -184,27 +205,15 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   function backineditor (e){
     debugger
-    if(checkpokemon()==null){
+    console.log("run picture event")
+    if(checkpokemon()==true){
       findpokemon(e.target.id)
     }
-    else {
-      document.getElementById('showfindpokemon').remove()
-      findpokemon(e.target.id)
-    }
-
   }
 
   function checkpokemon(){
     let a= document.getElementById('showfindpokemon')
-    if( a !== null) {
-        console.log(a.id)
-        return a.id
-    }
-    else {
-        console.log('a is null value')
-        return 
-    }
-    
+    return ( a !== null)? false: true; 
   }
 
 
