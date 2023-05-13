@@ -25,14 +25,6 @@
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png"
     },
     {
-      "id": "9",
-      "name": "Charmander",
-      "height": "6",
-      "weight": "85",
-      "type": "Fire",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
-    },
-    {
       "id": "10",
       "name": "Piplup",
       "height": "4",
@@ -47,14 +39,6 @@
       "weight": "60",
       "type": "Electric",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-    },
-    {
-      "id": "12",
-      "name": "Charizard",
-      "height": "01",
-      "weight": "905",
-      "type": "Fire",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
     },
     {
       "id": "13",
