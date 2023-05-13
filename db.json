@@ -1,14 +1,6 @@
 {
   "pokemons": [
     {
-      "id": "4",
-      "name": "Snorlax",
-      "height": "210",
-      "weight": "4600",
-      "type": "Normal",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
-    },
-    {
       "id": "7",
       "name": "Ditto",
       "height": "3",
@@ -33,20 +25,20 @@
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/393.png"
     },
     {
-      "id": "11",
-      "name": "Pikachu",
-      "height": "4",
-      "weight": "60",
-      "type": "Electric",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-    },
-    {
       "id": "13",
       "name": "Charizard",
       "height": "10",
-      "weight": "905",
+      "weight": "90500",
       "type": "Fire",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+    },
+    {
+      "id": "14",
+      "name": "Mew",
+      "height": "4",
+      "weight": "40",
+      "type": "Psychic",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"
     }
   ]
 }
