@@ -1,52 +1,60 @@
 {
   "pokemons": [
     {
-      "id": 1,
-      "name": "pikachu",
-      "height": "401",
-      "weight": "60",
-      "type": "abc",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-    },
-    {
-      "id": 2,
-      "name": "eevee",
-      "height": "30",
-      "weight": "65",
-      "type": "normal",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
-    },
-    {
-      "id": 3,
-      "name": "charizard",
-      "height": 17,
-      "weight": 905,
-      "type": "abc",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
-    },
-    {
-      "id": 4,
-      "name": "snorlax",
-      "height": 21,
-      "weight": 4600,
-      "type": "abc",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
-    },
-    {
-      "id": 5,
-      "name": "garchomp",
-      "height": 19,
-      "weight": 950,
-      "type": "abc",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png"
-    },
-    {
-      "name": "charizard",
+      "name": "Charizard",
       "height": "17",
       "weight": "905",
-      "type": "fire",
+      "type": "Fire",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
-      "id": 6
+      "id": 1
+    },
+    {
+      "name": "Pikachu",
+      "height": "4",
+      "weight": "60",
+      "type": "Electric",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
+      "id": 2
+    },
+    {
+      "name": "Eevee",
+      "height": "5",
+      "weight": "65",
+      "type": "Normal",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
+      "id": 3
+    },
+    {
+      "name": "Garchomp",
+      "height": "19",
+      "weight": "950",
+      "type": "Dragon",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/445.png",
+      "id": 5
+    },
+    {
+      "id": "6",
+      "name": "Ditto",
+      "height": "3",
+      "weight": "40",
+      "type": "Normal",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+    },
+    {
+      "id": "7",
+      "name": "Charmander",
+      "height": "60",
+      "weight": "85",
+      "type": "Fire",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+    },
+    {
+      "id": "8",
+      "name": "Vaporeon",
+      "height": "10",
+      "weight": "290",
+      "type": "Water",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"
     }
   ]
 }
