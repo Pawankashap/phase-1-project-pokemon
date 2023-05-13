@@ -69,9 +69,3 @@ body {
       width: 100%;
     }
   }
-  
-  .clearfix:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
