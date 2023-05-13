@@ -117,16 +117,22 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   function findpokemon(pokemonname){
     let txtinput, fetchValue
-    if(typeof pokemonname==='number' && typeof pokemonname!=='' && typeof pokemonname!=="" ){
-      txtinput=pokemonname
-      fetchValue=`http://localhost:3000/pokemons/${txtinput}`
+    // if(typeof pokemonname==='number' && typeof pokemonname!=='' && typeof pokemonname!=="" ){
+    //   txtinput=pokemonname
+    //   fetchValue=`http://localhost:3000/pokemons/${txtinput}`
 
+    // }
+    // else if(document.getElementById('txtfind').value!==''){
+    //   txtinput= document.getElementById('txtfind').value
+    //   fetchValue=`https://pokeapi.co/api/v2/pokemon/${txtinput.toLowerCase()}`
+    // }
+    txtinput= document.getElementById('txtfind').value
+    fetchValue=`https://pokeapi.co/api/v2/pokemon/${txtinput.toLowerCase()}`
+    if(txtinput==='')  {
+      document.getElementById('txtfind').focus()
+      window.alert('Please enter Pokemon name')
     }
-    else if(document.getElementById('txtfind').value!==''){
-      txtinput= document.getElementById('txtfind').value
-      fetchValue=`https://pokeapi.co/api/v2/pokemon/${txtinput.toLowerCase()}`
-    }
-    if(txtinput!=='' && txtinput!==undefined)  {
+    else if(txtinput!=='' && txtinput!==undefined)  {
 
     fetch(fetchValue)
     .then(res=> res.json())
@@ -191,7 +197,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
       if(typeof pokemonname==='object'){
         getid()
       }
-     },100)
+     },125)
      document.getElementById('txtfind').textContent=''
   }
 
@@ -201,6 +207,9 @@ window.addEventListener("DOMContentLoaded", (event) => {
       setenablebutton(2)
     }
     else {
+      document.getElementById('txtfind').value=''
+      document.getElementById('txtfind').focus()
+
       document.getElementById('showfindpokemon').remove()
       setenablebutton(1)
     }
@@ -301,9 +310,66 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
   function backineditor (e){
     if(checkpokemon()==true){
-      findpokemon(Number(e.target.id))
-      setenablebutton(2)
+      const child = document.getElementById(e.target.id).closest('div.gallery');
+      let editpokelist= {
+       id: e.target.id,
+       name: child.querySelector(`.c${e.target.id}`).querySelector('.clsname').innerHTML,
+       type: child.querySelector(`.c${e.target.id}`).querySelector('.clstype').innerHTML,
+       height: child.querySelector(`.c${e.target.id}`).querySelector('.clsheight').innerHTML,
+       weight: child.querySelector(`.c${e.target.id}`).querySelector('.clsweight').innerHTML,
+       image: document.getElementById(`${e.target.id}`).src
     }
+    console.log(editpokelist)
+    renderbacktoeditor(editpokelist)
+    setenablebutton(2)
+    }
+  }
+
+  function renderbacktoeditor(pokelist){
+    const chkdiv = document.createElement('div')
+            chkdiv.style="max-width: fit-content; padding-top: 2%;"
+            chkdiv.classList="col-sm-2"
+            const chkbox= document.createElement('input')
+            chkbox.type='checkbox'
+            chkbox.id=`${pokelist.id}`
+            chkbox.classList="chk"
+            chkbox.addEventListener('change',setenable)
+            chkbox.checked=true
+            chkdiv.appendChild(chkbox)
+
+        const img= document.createElement('img')
+        const divfind= document.getElementById('findPokemon')
+        const divshowitem= document.createElement('div')
+        divshowitem.classList="row col-container"
+        divshowitem.id="showfindpokemon"
+        let imagepath,typepath;
+        imagepath=pokelist.image
+        typepath=pokelist.type
+        divshowitem.innerHTML=`
+            <div class="col-sm-3">
+              <img id=${pokelist.id} src=${imagepath}>
+            </div>
+            <div class="col-sm-2">
+              <label >Pokemon Name</label>
+              <input id="txtname" type="text" value=${pokelist.name} > </input>
+            </div>
+            <div class="col-sm-2">
+              <label >Type</label>
+              <input id="txttype" type="text" value=${pokelist.type} > </input>
+            </div>
+            <div class="col-sm-2">
+              <label >Height</label>
+              <input id="txtheight" type="text" value=${pokelist.height} > </input>
+            </div>
+            <div class="col-sm-2">
+              <label >Weight</label>
+              <input id="txtweight" type="text" value=${pokelist.weight} > </input>
+            </div>
+            `
+        divshowitem.appendChild(chkdiv)
+        divfind.appendChild(divshowitem)
+        setenablebutton(1)
+        document.getElementById('txtfind').textContent=''
   }
 
   function checkpokemon(){

@@ -2,7 +2,7 @@
   "pokemons": [
     {
       "name": "Charizard",
-      "height": "17",
+      "height": "170",
       "weight": "905",
       "type": "Fire",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
@@ -49,14 +49,6 @@
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
     },
     {
-      "id": "11",
-      "name": "Pikachu",
-      "height": "40",
-      "weight": "60",
-      "type": "Electric",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
-    },
-    {
       "id": "12",
       "name": "Piplup",
       "height": "40",
@@ -67,7 +59,7 @@
     {
       "id": "13",
       "name": "Snorlax",
-      "height": "21",
+      "height": "210",
       "weight": "4600",
       "type": "Normal",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
@@ -82,14 +74,6 @@
     },
     {
       "id": "151",
-      "name": "Mew",
-      "height": "4",
-      "weight": "40",
-      "type": "Psychic",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"
-    },
-    {
-      "id": "152",
       "name": "Mew",
       "height": "4",
       "weight": "40",
