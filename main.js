@@ -76,12 +76,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function editpokemon(){
-    const gridvalue = document.querySelector(`.c${carddetails().id}`)
-    gridvalue.querySelector('.clsname').innerHTML=carddetails().name
-    gridvalue.querySelector('.clstype').innerHTML=carddetails().type
-    gridvalue.querySelector('.clsheight').innerHTML=carddetails().height
-    gridvalue.querySelector('.clsweight').innerHTML=carddetails().weight
-    updatepokemon(carddetails())
+    if(checkinputText()===true){
+      const gridvalue = document.querySelector(`.c${carddetails().id}`)
+      gridvalue.querySelector('.clsname').innerHTML=carddetails().name
+      gridvalue.querySelector('.clstype').innerHTML=carddetails().type
+      gridvalue.querySelector('.clsheight').innerHTML=carddetails().height
+      gridvalue.querySelector('.clsweight').innerHTML=carddetails().weight
+      updatepokemon(carddetails())
+    }
   }
 
   function delpokemonData(pokemonId){
@@ -126,14 +128,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
     //   txtinput= document.getElementById('txtfind').value
     //   fetchValue=`https://pokeapi.co/api/v2/pokemon/${txtinput.toLowerCase()}`
     // }
-    txtinput= document.getElementById('txtfind').value
-    fetchValue=`https://pokeapi.co/api/v2/pokemon/${txtinput.toLowerCase()}`
+    
+    txtinput= document.getElementById('txtfind').value.trim()
     if(txtinput==='')  {
       document.getElementById('txtfind').focus()
       window.alert('Please enter Pokemon name')
     }
     else if(txtinput!=='' && txtinput!==undefined)  {
-
+      
+      console.log(`https://pokeapi.co/api/v2/pokemon/${txtinput.toLowerCase()}`)
+      fetchValue=`https://pokeapi.co/api/v2/pokemon/${txtinput.toLowerCase()}`
     fetch(fetchValue)
     .then(res=> res.json())
     .then (pokemons=> {
@@ -192,13 +196,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
           throw(error);
         })
      }
-     setenablebutton(1)
+     
+     console.log('before set id function')
      setTimeout(()=>{
       if(typeof pokemonname==='object'){
         getid()
       }
      },125)
+     console.log('after set id function')
      document.getElementById('txtfind').textContent=''
+     
   }
 
   function setenable (e){
@@ -231,28 +238,69 @@ window.addEventListener("DOMContentLoaded", (event) => {
     fetch("http://localhost:3000/pokemons")
     .then(res=> res.json())
     .then (pokemons=> {
+      console.log(Math.max(pokemons)+1)
       let maxid
       let ids=[]
         pokemons.forEach((pokemon)=>{
             ids.push(pokemon.id)
         })
-        document.querySelector('.chk').id= Math.max(...ids)+1
+        //debugger
+        if(ids.length ===0){
+          document.querySelector('.chk').id= 1
+        }
+        else {
+        document.querySelector('.chk').id= Math.max(...ids)+1    
+        }
     })
+    setTimeout(() => {
+      setenablebutton(1)  
+    }, 50);
+    
   }
 
-  function addpokemon(obj){
-    let pokemonObj= {
-      id: document.querySelector('.chk').id,//document.getElementsByTagName('img')[1].id, //document.querySelector('.chk').id,
-      name: document.getElementById("txtname").value,
-      height: document.getElementById("txtheight").value,
-      weight:document.getElementById("txtweight").value,
-      type: document.getElementById("txttype").value,
-      image: document.getElementById(document.getElementsByTagName('img')[1].id).src
+  function checkinputText(){
+    if(document.getElementById("txtname").value===''){
+      document.getElementById("txtname").focus()
+      window.alert('Please enter Pokemon name')
+        return false
     }
-    
-    renderpokemon(pokemonObj)
-    insertpokemon(pokemonObj)
-    document.getElementById('txtfind').value=' '
+    else if(document.getElementById("txtheight").value===''){
+      document.getElementById("txtheight").focus()
+      window.alert('Please enter Pokemon height')
+      return false
+    }
+    else if (document.getElementById("txtweight").value==='') {
+      document.getElementById("txtweight").focus()
+      window.alert('Please enter Pokemon weight')
+      return false
+    }
+    else if(document.getElementById("txttype").value===''){
+      document.getElementById("txttype").focus()
+      window.alert('Please enter Pokemon type')
+      return false
+    }
+    else {
+      return true
+    }
+
+  }
+
+
+  function addpokemon(obj){
+    if(checkinputText()===true){
+      let pokemonObj= {
+        id: document.querySelector('.chk').id,//document.getElementsByTagName('img')[1].id, //document.querySelector('.chk').id,
+        name: document.getElementById("txtname").value,
+        height: document.getElementById("txtheight").value,
+        weight:document.getElementById("txtweight").value,
+        type: document.getElementById("txttype").value,
+        image: document.getElementById(document.getElementsByTagName('img')[1].id).src
+      }
+      
+      renderpokemon(pokemonObj)
+      insertpokemon(pokemonObj)
+      document.getElementById('txtfind').value=' '
+    }
   }
 
   function insertpokemon(pokemonObj){
