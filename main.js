@@ -2,25 +2,16 @@ window.addEventListener("DOMContentLoaded", (event) => {
    event.preventDefault()
     showheader()
     showdetail()
-    //getid()
   });
 
-  
-
   function showdetail(){
-    //debugger
     fetch("http://localhost:3000/pokemons")
     .then(res=> res.json())
     .then (pokemonsData=> pokemonsData.forEach(pokemon => renderpokemon(pokemon)))
-      
   }
 
   function showheader(){
-
-    console.log('run this show button')
-    //debugger
     const divsearch= document.createElement('div')
-    
     divsearch.classList="row"
 
     const findinput= document.createElement('input')  
@@ -30,7 +21,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
     findinput.style.maxWidth="30%"
     findinput.style.display="initial"
 
-    findinput.value='charizard'
+    //findinput.value='charizard'
     
     const btnfind= document.createElement('button')
     btnfind.classList="btn  btn-primary btnmargin"
@@ -51,8 +42,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     btnedit.innerText ="Edit"
     btnedit.addEventListener('click', editpokemon)
 
-   
-
     const btnedel= document.createElement('button')
     btnedel.classList="btn  btn-primary btnmargin"
     btnedel.id="btndel"
@@ -67,18 +56,13 @@ window.addEventListener("DOMContentLoaded", (event) => {
 
     divfind.appendChild(divsearch)
   }
-
   
   function deletepokemon(){
-    console.log(carddetails().id)
     document.querySelector(`.d${carddetails().id}`).remove()
-    console.log(carddetails())
     delpokemonData(carddetails().id)
-    
   }
 
   function carddetails(){
-    debugger
     let pokemonObj= {
 
       id: document.querySelector('.chk').id,
@@ -92,17 +76,14 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function editpokemon(){
-    console.log(carddetails().name)
     const gridvalue = document.querySelector(`.c${carddetails().id}`)
     gridvalue.querySelector('.clsname').innerHTML=carddetails().name
     gridvalue.querySelector('.clstype').innerHTML=carddetails().type
     gridvalue.querySelector('.clsheight').innerHTML=carddetails().height
     gridvalue.querySelector('.clsweight').innerHTML=carddetails().weight
-
     updatepokemon(carddetails())
-
-
   }
+
   function delpokemonData(pokemonId){
     fetch(`http://localhost:3000/pokemons/${pokemonId}`, {
       method: 'DELETE',
@@ -116,8 +97,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function updatepokemon(pokemonObj){
-    debugger
-    console.log(`http://localhost:3000/pokemons/${pokemonObj.id}`)
 
     fetch(`http://localhost:3000/pokemons/${pokemonObj.id}`, {
     method: 'PATCH',
@@ -137,8 +116,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
   }
 
   function findpokemon(pokemonname){
-   //debugger
-   console.log(typeof pokemonname)
     let txtinput, fetchValue
     if(typeof pokemonname==='number' && typeof pokemonname!=='' && typeof pokemonname!=="" ){
       txtinput=pokemonname
@@ -154,7 +131,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
     fetch(fetchValue)
     .then(res=> res.json())
     .then (pokemons=> {
-        //console.log(pokemons.id+ '  ' +pokemons.name +'  ' + pokemons.height +'  '+ pokemons.weight+'  '+ pokemons.types[0].type.name+'  '+pokemons.sprites.front_default)
             const chkdiv = document.createElement('div')
             chkdiv.style="max-width: fit-content; padding-top: 2%;"
             chkdiv.classList="col-sm-2"
@@ -216,17 +192,11 @@ window.addEventListener("DOMContentLoaded", (event) => {
         getid()
       }
      },100)
-     
-      
-
-
+     document.getElementById('txtfind').textContent=''
   }
 
   function setenable (e){
-    console.log(document.getElementById('txtname').value)
-debugger
     const chkvalue= document.getElementById(`${e.target.id}`)
-    console.log(chkvalue)
     if(chkvalue.checked===true){
       setenablebutton(2)
     }
@@ -254,19 +224,14 @@ debugger
     .then (pokemons=> {
       let maxid
       let ids=[]
-     
         pokemons.forEach((pokemon)=>{
             ids.push(pokemon.id)
         })
         document.querySelector('.chk').id= Math.max(...ids)+1
     })
   }
-  
 
   function addpokemon(obj){
-    console.log(obj)
-    debugger
-    //console.log(getid())
     let pokemonObj= {
       id: document.querySelector('.chk').id,//document.getElementsByTagName('img')[1].id, //document.querySelector('.chk').id,
       name: document.getElementById("txtname").value,
@@ -275,11 +240,12 @@ debugger
       type: document.getElementById("txttype").value,
       image: document.getElementById(document.getElementsByTagName('img')[1].id).src
     }
+    
     renderpokemon(pokemonObj)
     insertpokemon(pokemonObj)
-    
-    
+    document.getElementById('txtfind').value=' '
   }
+
   function insertpokemon(pokemonObj){
     fetch('http://localhost:3000/pokemons', {
     method: 'POST',
@@ -292,80 +258,49 @@ debugger
     .then(response => response.json())
     .then(response => console.log(JSON.stringify(response)))
     removesearch()
-    
-    
   }
 
   function removesearch() {
     const element = document.getElementById("showfindpokemon");
     element.remove();
+    document.getElementById('txtfind').textContent=''
   }
-
 
   function renderpokemon (pokemon){
-    
-    pokID=pokemon.id
-     // console.log(pokemon)
-
+      pokID=pokemon.id
       let container= document.getElementById('showDetail')
-      //container.classList="flex-cont photo"
-      //debugger
-
-        const divtag= document.createElement('div')
-        divtag.classList=`gallery ${pokID}`
-        //divtag.id=`${pokemon.id}`
-        
-        
-        const divtagouter= document.createElement('div')
-        divtagouter.classList=`responsive d${pokID}`
-        
-        
-        const imgtag= document.createElement('img')
-        // imgtag.classList=`${pokemon.id}`
-         imgtag.id=`${pokID}`
-         imgtag.addEventListener('click',backineditor)
-        const dtag= document.createElement('div')
-
-        const lblname= document.createElement('label')
-        lblname.innerHTML=`${pokemon.name}`
-        lblname.classList="txtvalue"
-        const lbltype= document.createElement('label')
-        lbltype.innerHTML=`${pokemon.type}`
-        lbltype.classList="txtvalue"
-        const lblheight= document.createElement('label')
-        lblheight.innerHTML=`${pokemon.height}`
-        lblheight.classList="txtvalue"
-        const lblweight= document.createElement('label')
-        lblweight.innerHTML=`${pokemon.weight}` 
-        lblweight.classList="txtvalue"
-        //dtag.classLis=`desc${pokemon.id}`
-        dtag.classList=`c${pokID}`
-        dtag.innerHTML= `<b><lable class='clsname'>${lblname.innerText}</lable></b> <br> <lable>Type : </lable> <lable class='clstype'>${lbltype.innerText}</lable> &nbsp;&nbsp;
+      const divtag= document.createElement('div')
+      divtag.classList=`gallery ${pokID}`
+      const divtagouter= document.createElement('div')
+      divtagouter.classList=`responsive d${pokID}`
+      const imgtag= document.createElement('img')
+      imgtag.id=`${pokID}`
+      imgtag.addEventListener('click',backineditor)
+      const dtag= document.createElement('div')
+      const lblname= document.createElement('label')
+      lblname.innerHTML=`${pokemon.name}`
+      lblname.classList="txtvalue"
+      const lbltype= document.createElement('label')
+      lbltype.innerHTML=`${pokemon.type}`
+      lbltype.classList="txtvalue"
+      const lblheight= document.createElement('label')
+      lblheight.innerHTML=`${pokemon.height}`
+      lblheight.classList="txtvalue"
+      const lblweight= document.createElement('label')
+      lblweight.innerHTML=`${pokemon.weight}` 
+      lblweight.classList="txtvalue"
+      dtag.classList=`c${pokID}`
+      dtag.innerHTML= `<b><lable class='clsname'>${lblname.innerText}</lable></b> <br> <lable>Type : </lable> <lable class='clstype'>${lbltype.innerText}</lable> &nbsp;&nbsp;
         <lable>Height : </lable> <lable class='clsheight'>${lblheight.innerText}</lable> &nbsp;&nbsp;<lable>Weight: </lable> <lable class='clsweight'>${lblweight.innerText}</lable> `
-        //dtag.append(lblname,lbltype,lblheight,lblweight) 
-        imgtag.src= `${pokemon.image}`
-
-        divtag.appendChild(imgtag)
-        divtag.appendChild(dtag)
-        divtagouter.appendChild(divtag)
-        container.appendChild(divtagouter)
-
-        // const btnedit= document.getElementById('btnedit')
-        // btnedit.addEventListener('click', (e) => {
-        //   debugger
-        //   console.log(e.target.id)
-        //     pokemon.height=Number(pokemon.height)+10
-        //     lblheight.textContent=pokemon.height
-        // })
-         
+      imgtag.src= `${pokemon.image}`
+      divtag.appendChild(imgtag)
+      divtag.appendChild(dtag)
+      divtagouter.appendChild(divtag)
+      container.appendChild(divtagouter)
   }
-
-  
-
 
   function backineditor (e){
     if(checkpokemon()==true){
-      //console.log(Number(e.target.id))
       findpokemon(Number(e.target.id))
       setenablebutton(2)
     }
@@ -375,14 +310,3 @@ debugger
     let a= document.getElementById('showfindpokemon')
     return ( a !== null)? false: true; 
   }
-
-
-
-  
-  function renderpokemonupdate(pokemonObj){
-
-  }
-
-  
-
-

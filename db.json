@@ -9,16 +9,8 @@
       "id": 1
     },
     {
-      "name": "Pikachu",
-      "height": "4",
-      "weight": "60",
-      "type": "Electric",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
-      "id": 2
-    },
-    {
       "name": "Eevee",
-      "height": "5",
+      "height": "50",
       "weight": "65",
       "type": "Normal",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png",
@@ -33,17 +25,9 @@
       "id": 5
     },
     {
-      "id": "6",
-      "name": "Ditto",
-      "height": "3",
-      "weight": "40",
-      "type": "Normal",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
-    },
-    {
       "id": "7",
       "name": "Charmander",
-      "height": "60",
+      "height": "6000",
       "weight": "85",
       "type": "Fire",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
@@ -55,6 +39,62 @@
       "weight": "290",
       "type": "Water",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/134.png"
+    },
+    {
+      "id": "10",
+      "name": "Ditto",
+      "height": "30",
+      "weight": "40",
+      "type": "Normal",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
+    },
+    {
+      "id": "11",
+      "name": "Pikachu",
+      "height": "40",
+      "weight": "60",
+      "type": "Electric",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"
+    },
+    {
+      "id": "12",
+      "name": "Piplup",
+      "height": "40",
+      "weight": "52",
+      "type": "Water",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/393.png"
+    },
+    {
+      "id": "13",
+      "name": "Snorlax",
+      "height": "21",
+      "weight": "4600",
+      "type": "Normal",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png"
+    },
+    {
+      "id": "14",
+      "name": "Eevee",
+      "height": "3",
+      "weight": "65",
+      "type": "Normal",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/133.png"
+    },
+    {
+      "id": "151",
+      "name": "Mew",
+      "height": "4",
+      "weight": "40",
+      "type": "Psychic",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"
+    },
+    {
+      "id": "152",
+      "name": "Mew",
+      "height": "4",
+      "weight": "40",
+      "type": "Psychic",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"
     }
   ]
 }
