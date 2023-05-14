@@ -1,7 +1,7 @@
 {
   "pokemons": [
     {
-      "id": "7",
+      "id": "1",
       "name": "Ditto",
       "height": "3",
       "weight": "40",
@@ -9,36 +9,12 @@
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png"
     },
     {
-      "id": "8",
+      "id": "2",
       "name": "Gardevoir",
       "height": "16",
       "weight": "484",
       "type": "Psychic",
       "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/282.png"
-    },
-    {
-      "id": "10",
-      "name": "Piplup",
-      "height": "4",
-      "weight": "52",
-      "type": "Water",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/393.png"
-    },
-    {
-      "id": "13",
-      "name": "Charizard",
-      "height": "10",
-      "weight": "90500",
-      "type": "Fire",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
-    },
-    {
-      "id": "14",
-      "name": "Mew",
-      "height": "4",
-      "weight": "40",
-      "type": "Psychic",
-      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/151.png"
     }
   ]
 }
