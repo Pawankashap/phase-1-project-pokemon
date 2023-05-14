@@ -18,7 +18,11 @@ The Pokemon App requires Software requirments
     2. It allows you to change Pokemon details if you want. Click on the Add button to save Pokemon details on your local database, and you can see the Pokemon details in the Details section.
     3. After Pokemon are safe, you can change their details. Click on the image of Pokemon, and you can see Pokemon details auto-filled in the editor section. It allows you to edit the Pokemon's details. After making changes, click on the edit button to save the changes in the database.
     4. If you think you don't like Pokemon on your list, you want to remove them from it. Click on the Pokemon's picture, and the Pokemon's details fill in the editor section. then click on the delete button to delete Pokemon.
+#Contributing
 
+
+#License
+MIT
 
 
 
