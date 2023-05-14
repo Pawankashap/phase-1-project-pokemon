@@ -16,11 +16,14 @@ The Pokemon App requires Software requirments
 * Web application server
 # How to Use
 1. The Pokemon App allows you to find your favorite Pokemon. Enter your favorite Pokemon's name into the search bar to find it. Then click find to search for the Pokemon's details like picture, name,type, height, and width from the external API. You can see the Pokemon's details in the details section.
+![image](https://github.com/Pawankashap/phase-1-project-pokemon/assets/126440752/1a9a2477-9e54-405e-91c1-7d2eba6d6291)
 
 2. It allows you to change Pokemon details if you want. Click on the Add button to save Pokemon details on your local database, and you can see the Pokemon details in the Details section.
+![image](https://github.com/Pawankashap/phase-1-project-pokemon/assets/126440752/57dadf02-9f8b-49a2-86ab-5e9976b46e2b)
 
 3. After Pokemon are safe, you can change their details. Click on the image of Pokemon, and you can see Pokemon details auto-filled in the editor section. It allows you to edit the Pokemon's details. After making changes, click on the edit button to save the changes in the database.
-    
+![image](https://github.com/Pawankashap/phase-1-project-pokemon/assets/126440752/02b9facb-5d7f-46b8-a565-749b5bc2b7e6)
+
 4. If you think you don't like Pokemon on your list, you want to remove them from it. Click on the Pokemon's picture, and the Pokemon's details fill in the editor section. then click on the delete button to delete Pokemon.
    
 # Contributing
