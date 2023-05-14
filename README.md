@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # phase-1-project-pokemon
 It's get Pokemon information from external API and store in db.Json
 ![image](https://github.com/Pawankashap/phase-1-project-pokemon/assets/126440752/c04c809a-6510-4dde-8d95-df42d0737faa)
@@ -19,11 +20,16 @@ The Pokemon App requires Software requirments
     3. After Pokemon are safe, you can change their details. Click on the image of Pokemon, and you can see Pokemon details auto-filled in the editor section. It allows you to edit the Pokemon's details. After making changes, click on the edit button to save the changes in the database.
     4. If you think you don't like Pokemon on your list, you want to remove them from it. Click on the Pokemon's picture, and the Pokemon's details fill in the editor section. then click on the delete button to delete Pokemon.
 #Contributing
-
+    
 
 #License
-MIT
+    MIT
 
 
 
 
+=======
+# phase-1-project-pokemon
+It's get Pokemon information from external API and store in db.Json
+![image](https://github.com/Pawankashap/phase-1-project-pokemon/assets/126440752/c04c809a-6510-4dde-8d95-df42d0737faa)
+>>>>>>> 47b942377939535505c96d382aa9f164a042e09a
