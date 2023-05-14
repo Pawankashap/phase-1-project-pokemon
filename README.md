@@ -14,14 +14,13 @@ The Pokemon App requires Software requirments
 * Java Runtime Environment (JRE)
 * Web application server
 # How to Use
-    1. The Pokemon App allows you to find your favorite Pokemon. Enter your favorite Pokemon's name into the search bar to find it. Then click find to search for the Pokemon's details like picture, name,type, height, and width from the external API. You can see the Pokemon's details in the details section.
-    
+    * The Pokemon App allows you to find your favorite Pokemon. Enter your favorite Pokemon's name into the search bar to find it. Then click find to search for the Pokemon's details like picture, name,type, height, and width from the external API. You can see the Pokemon's details in the details section.
+       
+    * It allows you to change Pokemon details if you want. Click on the Add button to save Pokemon details on your local database, and you can see the Pokemon details in the Details section.
    
-    2. It allows you to change Pokemon details if you want. Click on the Add button to save Pokemon details on your local database, and you can see the Pokemon details in the Details section.
-   
-    3. After Pokemon are safe, you can change their details. Click on the image of Pokemon, and you can see Pokemon details auto-filled in the editor section. It allows you to edit the Pokemon's details. After making changes, click on the edit button to save the changes in the database.
+    * After Pokemon are safe, you can change their details. Click on the image of Pokemon, and you can see Pokemon details auto-filled in the editor section. It allows you to edit the Pokemon's details. After making changes, click on the edit button to save the changes in the database.
   
-   4. If you think you don't like Pokemon on your list, you want to remove them from it. Click on the Pokemon's picture, and the Pokemon's details fill in the editor section. then click on the delete button to     delete Pokemon.
+   * If you think you don't like Pokemon on your list, you want to remove them from it. Click on the Pokemon's picture, and the Pokemon's details fill in the editor section. then click on the delete button to     delete Pokemon.
    ![image](https://github.com/Pawankashap/phase-1-project-pokemon/assets/126440752/804ce111-4444-4c79-bb3c-8c9d7a9123aa)
    
 # Contributing
